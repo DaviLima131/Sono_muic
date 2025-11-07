@@ -4,9 +4,9 @@ require_once 'conn.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
-    $senha = trim($_POST['password']);
+    $password = trim($_POST['password']);
 
-    if (!empty($username) && !empty($senha)) {
+    if (!empty($username) && !empty($password)) {
         $sql = "SELECT id, username, senha FROM usuarios WHERE username = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $username);
@@ -15,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($result && $result->num_rows === 1) {
             $user = $result->fetch_assoc();
-
-            if (password_verify($senha, $user['senha'])) {
+            if (password_verify($password, $user['senha'])) {
+                $_SESSION['usuario_id'] = $user['id'];
                 $_SESSION['usuario'] = $user['username'];
                 header("Location: index.php");
                 exit();
@@ -28,8 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['message'] = "Usuário não encontrado!";
             $_SESSION['message_type'] = "warning";
         }
-
-        $stmt->close();
     } else {
         $_SESSION['message'] = "Preencha todos os campos!";
         $_SESSION['message_type'] = "warning";
@@ -37,4 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     header("Location: login.php");
     exit();
+} else {
+    header("Location: login.php");
+    exit();
 }
+?>

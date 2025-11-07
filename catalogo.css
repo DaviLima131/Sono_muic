@@ -1,134 +1,116 @@
-/*
-======================================================
-  Estilos do Conteúdo Principal do Catálogo
-======================================================
-*/
-
-/* Título da Página */
-.content-container h2 {
-    font-size: 38px;
-    font-weight: 700;
-    color: #9b59b6;
-    margin-bottom: 40px;
-    padding-top: 10px;
-}
-
-/* Container da Lista de Músicas */
 .music-list {
-    display: grid;
-    /* Usa Grid para criar um layout responsivo de colunas */
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px; /* Espaço entre os cards */
-    padding: 0;
-    list-style: none;
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cards quebrem para a próxima linha */
+    gap: 20px; /* Espaço entre os cards */
 }
 
-/* Card Individual de Música */
-.music-item {
-    background-color: #1a1a1a; /* Fundo escuro do card */
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+/* Card da música */
+.music-card {
+    width: 200px; /* <<-- Largura fixa para todos os cards em telas maiores */
+    background-color: #1b1b1b;
+    border-radius: 15px; /* Mantive 15px, mas 10px é o outro valor que você tinha */
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
-    align-items: center;
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra padrão */
 }
 
-.music-item:hover {
-    transform: translateY(-5px); /* Efeito de elevação sutil */
-    box-shadow: 0 8px 25px rgba(155, 89, 182, 0.3); /* Sombra roxa no hover */
+.music-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(155, 89, 182, 0.5); 
 }
 
-/* Imagem de Capa */
-.music-item img {
+/* Capa da música */
+.music-cover {
     width: 100%;
-    max-width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    border: 2px solid #5d3587; /* Borda sutil */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    height: 200px;
+    overflow: hidden;
+    border-bottom: 1px solid #2c2c2c;
 }
 
-/* Título e Artista */
-.music-item h3 {
-    font-size: 20px;
-    color: #f0f0f0;
+.music-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.3s;
+}
+
+.music-card:hover .music-cover img {
+    transform: scale(1.05); 
+}
+
+
+.music-info {
+    padding: 12px 8px;
+}
+
+.music-info h3 {
+    font-size: 18px;
     margin: 5px 0 2px 0;
-    overflow: hidden;
+    color: #f0f0f0;
     white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
-    width: 100%;
 }
 
-.music-item p {
+.music-info p,
+.music-info .genero {
     font-size: 14px;
     color: #c0c0c0;
-    margin: 0 0 15px 0;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Player de Áudio */
-.music-item audio {
-    width: 100%;
-    max-width: 250px; /* Limita a largura do player */
-    margin-bottom: 15px;
-    /* Estilização básica para o player padrão (limitada via CSS) */
-    filter: invert(1); /* Inverte cores para melhor contraste no tema escuro (navegadores suportados) */
-}
-
-/* Ações (Editar | Excluir) */
+/* Ações do card */
 .music-actions {
-    margin-top: 10px;
-    font-size: 14px;
     display: flex;
-    gap: 10px;
-    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-top: 1px solid #2c2c2c;
 }
 
 .music-actions a {
+    color: #9b59b6;
+    font-size: 13px;
     text-decoration: none;
-    color: #9b59b6; /* Cor roxa para links de ação */
-    font-weight: 500;
     transition: color 0.2s;
 }
 
 .music-actions a:hover {
-    color: #c080ff; /* Roxo mais claro no hover */
+    color: #b37dfc;
     text-decoration: underline;
 }
 
-/*
-======================================================
-  Responsividade
-======================================================
-*/
+/* Responsividade */
 @media (max-width: 768px) {
-    .content-container {
-        padding: 20px;
-    }
-
     .music-list {
-        /* No mobile, use colunas menores ou apenas uma coluna */
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 15px;
     }
-    
-    .music-item {
-        padding: 15px;
+
+    .music-card {
+        width: minmax(150px, 100%);
+
     }
 
-    .music-item img {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 10px;
+    .music-cover {
+        height: 150px; /* Capa menor em telas menores */
     }
 
-    .music-item h3 {
+    .music-info h3 {
         font-size: 16px;
     }
+
+    .music-info p {
+        font-size: 12px;
+    }
+
+    .music-actions a {
+        font-size: 12px;
+    }
 }
-    

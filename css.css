@@ -1,10 +1,10 @@
-
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #0d0d0d; /* Fundo pret */
-    color: #f0f0f0; /* Cor do texto branco */
+    background-color: #0d0d0d;
+    color: #f0f0f0;
     overflow-x: hidden;
 }
 
@@ -14,10 +14,9 @@ body, html {
 }
 
 
-/* Sidebar - Barra Lateral */
 .sidebar {
     width: 250px;
-    background-color: #1a1a1a; /* Fundo mais escuro */
+    background-color: #1a1a1a;
     padding: 20px;
     position: fixed;
     top: 0;
@@ -27,15 +26,17 @@ body, html {
     flex-direction: column;
     z-index: 10;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, width 0.3s ease;
 }
 
 .logo h1 {
     font-size: 28px;
     margin-bottom: 30px;
     text-align: center;
-    color: #9b59b6; /* Roxo para o título */
+    color: #9b59b6;
 }
 
+/* Menu de navegação */
 .nav-menu {
     list-style: none;
     padding: 0;
@@ -49,12 +50,12 @@ body, html {
 .nav-item a {
     display: flex;
     align-items: center;
-    padding: 15px 20px;
+    padding: 12px 18px;
     text-decoration: none;
     color: #c0c0c0;
     font-size: 18px;
     border-radius: 10px;
-    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    transition: all 0.3s ease;
 }
 
 .nav-item a:hover {
@@ -64,41 +65,128 @@ body, html {
 }
 
 .nav-item.active a {
-    background-color: #5d3587; /* Roxo escuro para o item ativo */
+    background-color: #5d3587;
     color: #ffffff;
     font-weight: bold;
 }
 
 .nav-item .material-icons {
-    margin-right: 15px;
+    margin-right: 12px;
     font-size: 24px;
-    color: #9b59b6; /* Roxo para os ícones */
+    color: #9b59b6;
 }
 
-/* Content Container - Conteúdo Principal */
+/* =========================
+   Botão Logout
+========================= */
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 14px;
+    font-size: 14px;
+    background: #222;
+    border: none;
+    border-radius: 6px;
+    color: #bbb;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 400;
+    margin-top: auto;
+    margin-bottom: 18px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 18px;
+    bottom: 0;
+}
+
+.logout-btn:hover {
+    opacity: 1;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.logout-btn .material-icons {
+    font-size: 18px;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 14px;
+    font-size: 14px;
+    background: #222;
+    border: none;
+    border-radius: 6px;
+    color: #bbb;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 400;
+    margin-top: auto;
+    margin-bottom: 18px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 18px;
+    bottom: 0;
+}
+
+.logout-btn:hover {
+    opacity: 1;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+
+@media (max-width: 768px) {
+    .logout-btn {
+        position: static;       
+        margin: 0 10px;      
+        padding: 6px 10px;      
+        font-size: 12px;  
+        border-radius: 6px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+/* =========================
+   Conteúdo Principal
+========================= */
 .content-container {
     margin-left: 250px;
+    /* espaço da sidebar */
     padding: 30px 50px;
     width: calc(100% - 250px);
+    transition: margin-left 0.3s, width 0.3s;
+    box-sizing: border-box;
 }
 
+/* Header */
 .header {
     margin-bottom: 30px;
-    padding-top: 20px;
 }
 
-.header h2 {
-    font-size: 42px;
-    font-weight: bold;
-    color: #9b59b6; /* Título principal em roxo */
+.header h1 {
+    font-size: 36px;
+    color: #9b59b6;
 }
 
+/* Banner */
 .banner {
     background-color: #1a1a1a;
     border-radius: 15px;
-    padding: 50px;
+    padding: 50px 20px;
     text-align: center;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.3s;
+}
+
+.banner:hover {
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
 }
 
 .banner p {
@@ -112,18 +200,91 @@ body, html {
     max-width: 900px;
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s;
+}
+
+.banner img:hover {
+    transform: scale(1.02);
+}
+
+/* Sobre o site */
+.sobre-site {
+    background: #151018;
+    margin: 40px auto;
+    border-radius: 16px;
+    padding: 40px 25px;
+    color: #e5e5e5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.6s ease;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 800px;
+    border: 1px solid rgba(120, 70, 170, 0.25);
+}
+
+.sobre-site h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: #cdb4ff;
+    font-weight: 600;
+}
+
+.sobre-site p {
+    font-size: 15px;
+    color: #c9c9c9;
+    margin-bottom: 10px;
+}
+
+.sobre-site .highlight {
+    color: #a970ff;
+    font-weight: 600;
+}
+
+/* Carousel */
+.carousel-container {
+    margin: 20px 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-img img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 992px) {
+    .content-container {
+        padding: 20px 30px;
+    }
 }
 
 @media (max-width: 768px) {
+
+    /* Sidebar topo */
     .sidebar {
         width: 100%;
-        height: auto;
-        position: static;
+        height: 60px;
         flex-direction: row;
-        justify-content: space-around;
-        padding: 10px 0;
-        box-shadow: none;
-        border-bottom: 1px solid #282828;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        z-index: 999;
     }
 
     .logo {
@@ -134,31 +295,27 @@ body, html {
         display: flex;
         justify-content: space-around;
         width: 100%;
-    }
-    
-    .nav-item {
         margin: 0;
+        padding: 0;
     }
 
     .nav-item a {
-        flex-direction: column;
-        align-items: center;
-        padding: 8px;
+        padding: 5px;
         font-size: 12px;
+        flex-direction: column;
+        gap: 2px;
     }
 
     .nav-item .material-icons {
-        margin-right: 0;
-        margin-bottom: 5px;
-        font-size: 20px;
-        color: #9b59b6;
+        font-size: 18px;
+        margin: 0;
     }
 
     .content-container {
         margin-left: 0;
+        margin-top: 60px;
         width: 100%;
-        padding: 20px;
+        padding: 15px;
     }
+
 }
-
-

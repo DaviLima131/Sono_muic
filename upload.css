@@ -1,188 +1,155 @@
-/* Estilos para a seção de Upload */
-.upload-section {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #1a1a1a;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-.upload-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Espaço entre os grupos de formulário */
-}
-
-h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+/* ===== Reset e Layout Geral ===== */
+body {
+    background: #0d0d0d;
     color: #fff;
-    text-align: center;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.form-group {
+/* Container principal centralizado */
+.content-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* mantém no topo */
+    width: 100%;
+    padding: 20px 15px; /* pouco espaço no topo */
 }
 
-.form-group label {
-    font-size: 18px;
-    color: #f0f0f0;
-    margin-bottom: 8px;
-}
-
-.form-group input[type="text"],
-.form-group input[type="file"] {
-    padding: 12px;
-    border: 2px solid #5d3587;
-    border-radius: 8px;
-    background-color: #2c2c2c;
-    color: #ffffff;
-    font-size: 16px;
-    outline: none; /* Remove a borda azul ao focar */
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.form-group input[type="text"]:focus,
-.form-group input[type="file"]:focus {
-    border-color: #9b59b6;
-    box-shadow: 0 0 8px rgba(155, 89, 182, 0.5);
-}
-
-/* Esconder o input de arquivo padrão e estilizar o label */
-.form-group input[type="file"] {
-    display: none;
-}
-
-.form-group .custom-file-upload {
-    display: block;
-    padding: 12px;
-    background-color: #2c2c2c;
-    border: 2px solid #5d3587;
-    border-radius: 8px;
-    color: #ffffff;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.3s;
-}
-
-.form-group .custom-file-upload:hover {
-    background-color: #3a3a3a;
-}
-
-.btn {
-    padding: 15px 30px;
-    background-color: #9b59b6;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.btn:hover {
-    background-color: #7d48a3;
-    transform: translateY(-2px);
-}
-
-/* Esconde o input de arquivo padrão */
-.form-group input[type="file"] {
-    display: none;
-}
-
-/* Estiliza a label para parecer um botão */
-.custom-file-upload-label {
-    display: inline-block;
-    padding: 12px 20px;
-    background-color: #5d3587; /* Cor de fundo roxa escura */
-    color: #ffffff;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer; /* Muda o cursor para indicar que é clicável */
-    transition: background-color 0.3s;
-    text-align: center;
-}
-
-.custom-file-upload-label:hover {
-    background-color: #7d48a3; /* Roxo mais claro ao passar o mouse */
-}
-
-.upload-section {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
+/* ===== Seção Tutorial / Passo a Passo ===== */
+.tutorial-section {
+    width: 100%;
+    max-width: 650px;
     background-color: #1a1a1a;
+    padding: 25px 28px;
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    text-align: left; /* igual outras seções */
+    margin-top: 10px; /* bem próximo do topo */
+}
+
+.tutorial-section h2 {
+    font-size: 1.8rem;
+    color: #9b59b6;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.tutorial-section h3 {
+    font-size: 1.2rem;
+    color: #d7b4f2;
+    margin-top: 18px;
+}
+
+.tutorial-section p {
+    color: #dcdcdc;
+    line-height: 1.5rem;
+    margin-top: 8px;
+}
+
+.tutorial-section a {
+    color: #b884e3;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.tutorial-section a:hover {
+    color: #e7caff;
+}
+
+/* ===== Seção Upload ===== */
+.upload-section {
+    width: 100%;
+    max-width: 600px;
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    margin-top: 15px;
 }
 
 .upload-section h2 {
+    font-size: 2rem;
     text-align: center;
     color: #9b59b6;
     margin-bottom: 20px;
 }
 
+/* ===== Formulário ===== */
+.upload-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
 .form-group {
-    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
 }
 
 .form-group label {
-    margin-bottom: 8px;
-    color: #f0f0f0;
-    font-size: 16px;
+    font-size: 15px;
+    color: #eaeaea;
+    margin-bottom: 6px;
 }
 
-.form-group input[type="text"] {
+.form-group input[type="text"],
+#genero_outro {
     padding: 12px;
     border-radius: 8px;
     border: 2px solid #5d3587;
     background-color: #2c2c2c;
     color: #fff;
     font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.form-group input[type="text"]:focus {
-    border-color: #9b59b6;
-    box-shadow: 0 0 8px rgba(155, 89, 182, 0.5);
+#genero_outro {
+    display: none;
+    margin-top: 6px;
 }
 
-/* Botão upload de arquivo */
+.form-group select {
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #2c2c2c;
+    border: 2px solid #5d3587;
+    color: #fff;
+    font-size: 15px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
 .form-group input[type="file"] {
     display: none;
 }
 
 .custom-file-upload-label {
-    padding: 12px;
+    padding: 14px;
     background-color: #5d3587;
     color: #fff;
     border-radius: 8px;
-    text-align: center;
     font-weight: bold;
+    text-align: center;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: 0.3s;
 }
 
 .custom-file-upload-label:hover {
     background-color: #7d48a3;
 }
 
-/* Botão enviar */
 .btn {
     padding: 15px;
-    background-color: #9b59b6;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
     font-size: 18px;
     font-weight: bold;
+    background-color: #9b59b6;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+    transition: 0.3s;
 }
 
 .btn:hover {
@@ -190,9 +157,34 @@ h2 {
     transform: translateY(-2px);
 }
 
-/* Mensagem de feedback */
 .feedback {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 16px;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+    .tutorial-section h2 { font-size: 1.6rem; }
+    .tutorial-section h3 { font-size: 1.1rem; }
+    .upload-section h2 { font-size: 1.6rem; }
+}
+
+@media (max-width: 480px) {
+    .tutorial-section,
+    .upload-section {
+        padding: 18px 15px;
+    }
+
+    .btn, .custom-file-upload-label {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+.capa-musica {
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* cobre o espaço, mantendo proporção */
+    border-radius: 8px;
 }

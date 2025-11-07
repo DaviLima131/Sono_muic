@@ -9,18 +9,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // ======= 1. Validações básicas =======
     if (empty($email) || empty($senha) || empty($confirmar_senha)) {
-        die("Preencha todos os campos.");
+        $_SESSION['message'] = "Preencha todos os campos!";
+        $_SESSION['message_type'] = "warning";
+        header("Location: register.php");
+        exit();
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        die("Email inválido.");
+        $_SESSION['message'] = "Digite um e-mail válido.";
+        $_SESSION['message_type'] = "warning";
+        header("Location: register.php");
+        exit();
     }
 
     if ($senha !== $confirmar_senha) {
-        die("As senhas não coincidem.");
+        $_SESSION['message'] = "As senhas não coincidem.";
+        $_SESSION['message_type'] = "warning";
+        header("Location: register.php");
+        exit();
     }
 
-    // ======= 2. Verifica se email já existe =======
+    // ======= 2. Verifica se e-mail já existe =======
     $sql = "SELECT id FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
@@ -28,28 +37,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        die("Email já registrado.");
+        $_SESSION['message'] = "Este e-mail já está cadastrado.";
+        $_SESSION['message_type'] = "warning";
+        header("Location: register.php");
+        exit();
     }
     $stmt->close();
 
-    // ======= 3. Criptografar senha =======
+    // ======= 3. Criptografa senha =======
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-    // ======= 4. Inserir no banco (sem nome agora) =======
+    // ======= 4. Inserir no banco =======
     $sql = "INSERT INTO usuarios (email, senha) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $email, $senhaHash);
 
     if ($stmt->execute()) {
-        echo "Conta criada com sucesso! <a href='login.php'>Fazer login</a>";
+        $_SESSION['message'] = "Conta criada com sucesso! Faça login.";
+        $_SESSION['message_type'] = "success";
+        header("Location: login.php");
+        exit();
     } else {
-        echo "Erro ao registrar: " . $stmt->error;
+        $_SESSION['message'] = "Erro ao registrar. Tente novamente.";
+        $_SESSION['message_type'] = "danger";
+        header("Location: register.php");
+        exit();
     }
 
     $stmt->close();
     $conn->close();
 } else {
     header("Location: register.php");
-    exit;
+    exit();
 }
 ?>

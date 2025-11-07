@@ -1,139 +1,154 @@
-/*
-======================================================
-  ESTRUTURA GERAL E CENTRALIZAÇÃO TOTAL
-  Estes estilos garantem que o formulário fique no meio da tela
-======================================================
-*/
-
-/* 1. Força o container principal a ocupar a tela e centralizar o conteúdo */
-.main-container {
-    width: 100%;
-    min-height: 100vh;
+/* =========================
+   Estilo Geral
+========================= */
+body, html {
     margin: 0;
     padding: 0;
-    
+    font-family: 'Inter', sans-serif;
+    background-color: #121212;
+    color: #f0f0f0;
+    min-height: 100vh;
     display: flex;
-    justify-content: center; /* Centraliza HORIZONTALMENTE */
-    align-items: center; /* Centraliza VERTICALMENTE */
+    justify-content: center;
+    align-items: center;
 }
 
-/* 2. Garante que o content-container (edit-page) não tenha margem da sidebar */
-.content-container.edit-page {
-    /* O padding é o único espaçamento que queremos aqui */
-    padding: 20px;
-    margin-left: 0; 
-    width: 100%; /* Permite que o wrapper interno centralize */
-    
-    /* Reseta as propriedades de flex que podem ter vindo de outro CSS */
-    display: block; 
-    min-height: auto; 
-    box-sizing: border-box;
-}
-
-/*
-======================================================
-  ESTILOS DO CARD E FORMULÁRIO
-======================================================
-*/
-
-/* Wrapper do Formulário: O Card visível */
-.form-wrapper {
-    background-color: #1a1a1a;
-    padding: 30px 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-    max-width: 500px;
+/* =========================
+   Container Principal
+========================= */
+.main-container {
     width: 100%;
-    text-align: left;
-    border: 1px solid #2c2c2c;
-    
-    /* Centraliza o bloco do formulário horizontalmente dentro do content-container */
-    margin: 0 auto; 
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
 }
 
-.form-wrapper h2 {
-    font-size: 32px;
+.content-container.edit-page {
+    background-color: #1e1e1e;
+    padding: 40px 35px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+/* =========================
+   Botão Voltar
+========================= */
+.back-btn {
+    display: inline-block;
     color: #9b59b6;
+    text-decoration: none;
     margin-bottom: 25px;
-    font-weight: 600;
-    text-align: center;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-/* Estilo do Formulário */
+.back-btn:hover {
+    color: #d2a7ff;
+}
+
+/* =========================
+   Título da Página
+========================= */
+h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: #b37de7;
+}
+
+/* =========================
+   Formulário
+========================= */
 .form-edit {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espaçamento entre os campos */
-    /* Remove as regras de largura e margin que estavam se repetindo e causando conflito */
-    max-width: 100%; 
-    width: auto;
-    margin: 0;
-    padding: 0;
+    gap: 18px;
 }
 
-/* Labels */
-.form-edit label {
-    font-weight: 400; /* Removido bold excessivo */
-    margin-top: 5px;
-    color: #c0c0c0;
-    font-size: 16px;
+label {
+    font-size: 14px;
+    color: #ccc;
 }
 
-/* Inputs de Texto */
-.form-edit input[type="text"] {
+input[type="text"],
+input[type="file"] {
     padding: 12px;
-    border: 1px solid #333333;
     border-radius: 8px;
-    background-color: #222222;
-    color: #f0f0f0;
-    font-size: 16px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.form-edit input[type="text"]:focus {
-    border-color: #9b59b6;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.4);
-}
-
-/* Botão Salvar */
-.btn-salvar {
-    margin-top: 25px;
-    padding: 12px 20px;
-    background-color: #9b59b6; 
-    color: #ffffff;
     border: none;
-    border-radius: 8px;
-    font-size: 18px;
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+    box-shadow: 0 0 8px #9b59b6;
+    background-color: #333;
+}
+
+/* =========================
+   Preview da Capa
+========================= */
+.capa-preview {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.capa-preview img {
+    width: 160px;
+    height: 160px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+
+
+/* =========================
+   Botão Salvar
+========================= */
+.btn-salvar {
+    margin-top: 15px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #9b59b6, #6e3fa2);
+    color: #fff;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    transition: all 0.3s ease;
 }
 
 .btn-salvar:hover {
-    background-color: #8e44ad;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(155, 89, 182, 0.5);
+    transform: scale(1.03);
+    background: linear-gradient(135deg, #b37de7, #844fc6);
+    box-shadow: 0 6px 20px rgba(155, 89, 182, 0.5);
 }
 
-
+/* =========================
+   Responsividade
+========================= */
 @media (max-width: 600px) {
-    .main-container {
-        /* Desativa a centralização vertical no mobile para que o topo fique visível */
-        align-items: flex-start; 
-    }
-    
-    .edit-page {
-        padding: 20px 10px;
+    .content-container.edit-page {
+        padding: 25px 20px;
     }
 
-    .form-wrapper {
-        padding: 20px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-        max-width: 100%; 
+    h2 {
+        font-size: 24px;
     }
-    
-    .form-wrapper h2 {
-        font-size: 26px;
+
+    .capa-preview img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .btn-salvar {
+        width: 100%;
     }
 }

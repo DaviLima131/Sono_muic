@@ -4,13 +4,11 @@ require_once 'conn.php';
 
 // 1. Verifica se o parâmetro 'id' foi passado na URL
 if (isset($_GET['id'])) {
-    // 2. Converte o ID para um número inteiro por segurança (sanitização)
+
     $id = intval($_GET['id']);
 
-    // 3. Verifica se o ID é válido (maior que zero)
     if ($id > 0) {
-        
-        // 4. Prepara a query SQL para DELETE usando prepared statements
+  
         $sql = "DELETE FROM musicas WHERE id = ?";
         
         // 5. Prepara a declaração SQL

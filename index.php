@@ -1,72 +1,29 @@
+<?php
+header('Content-Type: text/html; charset=utf-8');
+header('Cache-Control: no-cache');
+session_start();
+require_once 'conn.php';
+
+// bloqueia acesso se não estiver logado
+if (!isset($_SESSION['usuario'])) {
+    $_SESSION['message'] = "Por favor, faça login para acessar o sistema.";
+    $_SESSION['message_type'] = "warning";
+    header("Location: login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sono Musics - Início</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="banner.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-
-    .h1 {
-        text-align: center;
-    }
-
-        .banner {
-            height: 300px;
-            background: url('banner1.jpg') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-shadow: 2px 2px 8px #000;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        .banner h1 {
-            font-size: 2.5em;
-            text-align: center;
-            padding: 0 10px;
-        }
-
-        .main-image {
-            display: block;
-            max-width: 80%;
-            height: auto;
-            margin: 0 auto 30px auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .welcome-text {
-            text-align: center;
-            color: #ddd;
-            font-size: 1.2em;
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-        
-            .banner h1 {
-                font-size: 1.8em;
-            }
-
-            .main-image {
-                max-width: 90%;
-            }
-
-            .welcome-text {
-                font-size: 1em;
-                padding: 0 10px;
-            }
-        }
-    </style>
 </head>
-
 <body>
     <div class="main-container">
         <aside class="sidebar">
@@ -75,38 +32,40 @@
             </div>
             <nav class="nav-menu">
                 <ul>
-                    <li class="nav-item active">
-                        <a href="index.php">
-                            <span class="material-icons">home</span>
-                            Início
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="upload.php">
-                            <span class="material-icons">upload</span>
-                            Upload
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="catalogo.php">
-                            <span class="material-icons">library_music</span>
-                            Catálogo
-                        </a>
-                    </li>
+                    <li class="nav-item active"><a href="index.php"><span class="material-icons">home</span>Início</a></li>
+                    <li class="nav-item"><a href="upload.php"><span class="material-icons">upload</span>Upload</a></li>
+                    <li class="nav-item"><a href="catalogo.php"><span class="material-icons">library_music</span>Catálogo</a></li>
+                    <li class="nav-item"><a href="favoritos.php"><span class="material-icons">favorite</span>Favoritos</a></li>
                 </ul>
             </nav>
+            <a href="logout.php" class="logout-btn">
+                <span class="material-icons">logout</span>Sair
+            </a>
         </aside>
 
         <main class="content-container">
-            <div class="h1">
+            <header>
                 <h1>Bem-vindo ao Sono Musics</h1>
+            </header>
+            <div class="carousel-container">
+                <div class="carousel-img">
+                    <img src="music production  sonora (2) (1).png" alt="Banner principal Sono Musics">
+                </div>
             </div>
 
-            <img src="music production  sonora (2) (1).png" alt="Música" class="main-image">
-
-            <p class="welcome-text">
-                Explore o universo da música com Sono Musics! Descubra novos artistas, playlists exclusivas e curta suas músicas favoritas diretamente do seu navegador.
-            </p>
+            <!-- Sobre o site -->
+            <section class="sobre-site">
+                <h2>Sobre o <span class="highlight">Sono Musics</span></h2>
+                <p>
+                    O <span class="highlight">Sono Musics</span> é uma plataforma criada para conectar pessoas através da música. 
+                    Aqui, você pode enviar suas próprias faixas, descobrir novos artistas e criar uma biblioteca personalizada de sons que combinam com o seu estilo. 
+                    Nosso objetivo é oferecer um espaço simples, moderno e envolvente, onde a criatividade sonora pode fluir sem limites.
+                </p>
+                <p>
+                    Desenvolvido com dedicação e ritmo, o projeto busca valorizar a expressão musical independente, 
+                    transformando cada usuário em parte de uma comunidade apaixonada por música.
+                </p>
+            </section>
         </main>
     </div>
 </body>
