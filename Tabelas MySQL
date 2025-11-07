@@ -1,0 +1,26 @@
+Tabela: favoritos
+Columns:
+id int AI PK 
+usuario_id int 
+musica_id int 
+data_adicionado datetime
+
+
+Tabela: musicas
+Columns:
+id int AI PK 
+titulo varchar(255) 
+artista varchar(255) 
+genero varchar(100) 
+duracao_musica int UN 
+data_upload datetime 
+arquivo_mp3 varchar(255) 
+capa longblob 
+usuario_id int
+
+
+Tabala: usuarios
+Columns:
+id int AI PK 
+username varchar(255) 
+senha varchar(255)
